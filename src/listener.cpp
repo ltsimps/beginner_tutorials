@@ -10,11 +10,19 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 
-//handles messages for the chatter topic 
+/**
+*@brief handles messages for the chatter topic.
+*@param std_msgs::stringConstPtr& msg
+*/
 void chatterCallback(const std_msgs::String::ConstPtr& msg) {
     ROS_INFO("I heard: [%s]", msg->data.c_str());
 }
 
+/**
+*@brief main funtion for the listner  node
+*@param int argc 
+*@param char **argv
+*/
 int main(int argc, char **argv) {
     ros::init(argc, argv, "listener");
 
