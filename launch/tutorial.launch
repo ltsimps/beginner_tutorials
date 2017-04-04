@@ -1,0 +1,22 @@
+<launch>
+    <!-- Changing the frequency changes how often the messesage is sent to the listner  node -->
+    <arg name="frequency" default="5"/>
+
+    <!-- This Node handles output for beginner_tutorials -->
+    <node
+        pkg    = "beginner_tutorials"
+        type   = "talker"
+        name   = "talker"
+        output = "screen"
+        args   = "$(arg frequency)"
+    />
+
+   <!-- Thise node recieves input messages and outputs them to the screen -->
+    <node
+        pkg           = "beginner_tutorials"
+        type          = "listener"
+        name          = "listener"
+        output        = "screen"
+        launch-prefix = "xterm -e"
+    />
+</launch>
