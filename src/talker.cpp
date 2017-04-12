@@ -11,6 +11,9 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "beginner_tutorials/strings.h"
+#include "tf/transform_broadcaster.h"
+
+
 
 struct messages {
   std::string newMessage;
@@ -72,8 +75,22 @@ int main(int argc, char **argv) {
 
         ROS_INFO("%s", msg.data.c_str());
 
+       //setuping up transform and broadcaster. 
+        tf::TransformBroadcaster broadcaster;
+        tf::Transform transform;           
+
+
         // publishes the messages to be consumed.
         chatter_pub.publish(msg);
+
+        transform.setOrigin(tf::Vector3(1.0, 1.0, 1.0));
+        transform.setRotation(tf::Quaternion(0, 1, 0, 1));
+        broadcaster.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));
+
+        ROS_INFO("%f", transform.getRotation().y());
+        ROS_INFO("%f", transform.getRotation().z());
+        ROS_INFO("%f", transform.getRotation().w());
+
 
         ros::spinOnce();
 
