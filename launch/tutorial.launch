@@ -2,7 +2,6 @@
     <!-- Changing the frequency changes how often the messesage is sent to the listner  node -->
     <arg name="frequency" default="5"/>
 
-    <arg name="record_bag" default="false" />
 
     <!-- This Node handles output for beginner_tutorials -->
     <node
@@ -24,12 +23,4 @@
     />
 
 
-   <!-- Allows for recording and playback -->
-    <node 
-         pkg="rosbag" 
-         type="record" 
-         args="-a -O talker.bag" 
-         if="$(arg record_bag)"
-         name="record_rosbag"
-    />
 </launch>

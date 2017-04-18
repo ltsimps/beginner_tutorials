@@ -6,6 +6,7 @@
  *  Copyright 2017 
  */
 
+//#include <tf/transform_broadcaster.h>
 #include <sstream>
 #include <string>
 #include "ros/ros.h"
@@ -65,7 +66,11 @@ int main(int argc, char **argv) {
     // Sets frequency to default value or passed in value.
     ros::Rate loop_rate(frequency);
     message.newMessage = "FEAR THE TURTLE";
-
+    
+    //setting up transform and broadcaster. 
+    static tf::TransformBroadcaster broadcaster;
+    tf::Transform transform;           
+    
     int count = 0;
     while (ros::ok()) {
         std_msgs::String msg;
@@ -75,9 +80,6 @@ int main(int argc, char **argv) {
 
         ROS_INFO("%s", msg.data.c_str());
 
-       //setuping up transform and broadcaster. 
-        tf::TransformBroadcaster broadcaster;
-        tf::Transform transform;           
 
 
         // publishes the messages to be consumed.
