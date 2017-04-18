@@ -23,4 +23,14 @@
     />
 
 
+    <node 
+      pkg="rosbag" 
+      type="record" 
+      args="-a -O tutorials.bag" 
+      name="rosbag"
+      if="$(arg record)"
+
+    />
+
+
 </launch>
