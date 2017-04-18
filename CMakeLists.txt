@@ -46,8 +46,8 @@ if(CATKIN_ENABLE_TESTING)
   )
   
   add_dependencies(
-	  talker_test
 	  talker
+	  talker_test
 	  ${catkin_EXPORTED_TARGETS}
           ${PROJECT_NAME}_generate_messages_cpp
 
